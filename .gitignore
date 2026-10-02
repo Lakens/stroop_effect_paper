@@ -2,4 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-main_analysis_files/*
+output/analysis_files/*
+code/analysis.knit.md
