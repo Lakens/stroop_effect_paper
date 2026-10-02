@@ -24,11 +24,16 @@ Code Sharing in Psychology"](https://github.com/scienceverse/ms_FAIR_data_and_co
 
 `dataset_description.json`, at the repository root, is a machine-readable
 summary of the dataset (Schema.org `Dataset`), independent of this README.
+`renv.lock` pins the exact R package versions this analysis was last run
+with (see [Reproducing the analysis](#reproducing-the-analysis) below).
 
 ## Reproducing the analysis
 
 1. Open this repository in R (e.g., via its `.Rproj` file or by setting it
-   as the working directory).
+   as the working directory). This project uses
+   [renv](https://rstudio.github.io/renv/) to pin package versions
+   (`renv.lock`); on first opening the project, run `renv::restore()` to
+   install the exact package versions this analysis was last run with.
 2. `Rscript code/clean_data.R` regenerates `data/stroop_data.csv` from
    `data/raw/stroop_raw.csv` (already included, so this step is optional
    unless you want to re-run the conversion yourself).
@@ -47,7 +52,7 @@ summary of the dataset (Schema.org `Dataset`), independent of this README.
    TinyTeX does not already have (for example `orcidlink`, used for the
    author's ORCID) is installed automatically on first render.
 
-Required R packages: `ggplot2`, `reshape2`.
+Required R packages (pinned in `renv.lock`): `ggplot2`, `reshape2`, `pwr`.
 
 ## License
 

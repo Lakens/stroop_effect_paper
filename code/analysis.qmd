@@ -17,25 +17,46 @@ author-note:
   disclosures:
     conflict-of-interest: "The authors have no conflict of interest to declare."
     data-sharing: "All data, code, and materials are available at https://github.com/Lakens/stroop_effect_paper."
+    financial-support: "This research received no specific grant from any funding agency in the public, commercial, or not-for-profit sectors."
 date: "20 July 2018"
+bibliography: references.bib
 format:
   apaquarto-pdf:
     a4paper: true
 ---
 
 ```{r global_options, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
-#This code will check if ggplot2 and reshape2 are installed. 
+#This code will check if ggplot2, reshape2, and pwr are installed.
 #If not, this code will install these packages.
 if(!require(ggplot2)){install.packages('ggplot2')}
 library(ggplot2)
 if(!require(reshape2)){install.packages('reshape2')}
 library(reshape2)
+if(!require(pwr)){install.packages('pwr')}
+library(pwr)
 knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, include=TRUE)
 ```
 
 # Introduction
 
-Here, we analyze a simple dataset of a Stroop experiment. Students in an introduction to psychology course completed an online Stroop task (http://faculty.washington.edu/chudler/java/ready.html) and named the colors in congruent trials (e.g., the word 'red' written in a red font) and in incongruent trials (e.g., the word 'red' written in a green font). The time they took to name all words was self-reported in seconds (e.g., 21.3 seconds) for both the congruent and incongruent blocks. In this analysis, we are interested in examining whether there is a Stroop effect. 
+The Stroop effect -- the finding that it takes longer to name the font color of a word when that word names a different color (e.g., the word "red" printed in green ink) than when the word and its color match -- is one of the most robust and widely replicated phenomena in cognitive psychology [@macleod1991]. Here, we analyze a simple dataset of a Stroop experiment. Students in an introduction to psychology course completed an online Stroop task (http://faculty.washington.edu/chudler/java/ready.html) and named the colors in congruent trials (e.g., the word 'red' written in a red font) and in incongruent trials (e.g., the word 'red' written in a green font). The time they took to name all words was self-reported in seconds (e.g., 21.3 seconds) for both the congruent and incongruent blocks. In this analysis, we are interested in examining whether there is a Stroop effect.
+
+## Ethical approval
+
+All participants completed the task voluntarily as part of a classroom demonstration of research methods, and no identifying information was collected. Because no personally identifiable information was recorded and the task carried no more than minimal risk, this classroom demonstration was exempt from formal review by the Eindhoven University of Technology Ethics Review Board.
+
+## Power analysis
+
+The Stroop effect is one of the largest and most consistently replicated effects in cognitive psychology [@macleod1991], so we planned our sample size assuming a conservatively large effect.
+
+```{r}
+#| include: false
+power_result <- pwr.t.test(d = 0.8, sig.level = 0.01, power = 0.9,
+                           type = "paired", alternative = "two.sided")
+required_n <- ceiling(power_result$n)
+```
+
+An a priori power analysis for a paired-samples *t*-test, conducted using the `pwr.t.test()` function from the `pwr` package [@champely2020], indicated that for a Cohen's *d~z~* = `r power_result$d`, an alpha level of `r power_result$sig.level`, and a desired power of `r power_result$power * 100`%, at least `r required_n` participants would be needed. We report data from all students who completed the task in a single course offering, exceeding this minimum.
 
 ```{r}
 # The raw data (data/raw/stroop_raw.csv) were downloaded from
@@ -106,9 +127,13 @@ The mean reaction time (in seconds) of participants in the Congruent condition (
 stroop_data_long <- melt(stroop_data, id.vars = "participant_id", measure.vars = c("congruent", "incongruent"), variable.name = "congruency", value.name = "reactiontimes")
 
 ggplot(stroop_data_long, aes(x = congruency, y = reactiontimes)) +
-  geom_boxplot() + 
+  geom_boxplot() +
   geom_jitter(alpha = 0.25, width = 0.2) +
-  ylab("Reaction Times")  + xlab("Condition") + theme_bw(base_size = 14) + 
+  ylab("Reaction Times")  + xlab("Condition") + theme_bw(base_size = 14) +
   theme(panel.grid.major.x = element_blank())
 ```
+
+# Open Practices Statement
+
+The raw data, the processed data, the analysis code, and the code used to generate this manuscript are all openly available in a GitHub repository at https://github.com/Lakens/stroop_effect_paper. No preregistration was filed for this classroom demonstration.
 
