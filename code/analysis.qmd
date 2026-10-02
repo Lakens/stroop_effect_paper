@@ -1,8 +1,26 @@
 ---
-title: "Main Analysis"
-author: "Lakens"
-date: "20 juli 2018"
-format: html
+title: "The Stroop Effect: A Reproducible Analysis"
+shorttitle: "The Stroop Effect"
+author:
+  - name: Daniël Lakens
+    corresponding: true
+    orcid: 0000-0002-8393-5316
+    email: D.Lakens@tue.nl
+    affiliations:
+      - name: Eindhoven University of Technology
+        department: Industrial Engineering and Innovation Sciences
+        address: Den Dolech 2, 5600 MB
+        city: Eindhoven
+abstract: "Students in an introductory psychology course completed an online Stroop task, naming the font colors of words in congruent trials (e.g., the word 'red' printed in red) and incongruent trials (e.g., the word 'red' printed in green). We tested whether reaction times differed between the two conditions, as predicted by the Stroop effect."
+keywords: [Stroop effect, reaction time, reproducibility]
+author-note:
+  disclosures:
+    conflict-of-interest: "The authors have no conflict of interest to declare."
+    data-sharing: "All data, code, and materials are available at https://github.com/Lakens/stroop_effect_paper."
+date: "20 July 2018"
+format:
+  apaquarto-pdf:
+    a4paper: true
 ---
 
 ```{r global_options, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}

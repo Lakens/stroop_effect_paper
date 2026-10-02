@@ -18,8 +18,8 @@ Code Sharing in Psychology"](https://github.com/scienceverse/ms_FAIR_data_and_co
 | Folder | Contents |
 |---|---|
 | `data/` | `stroop_data.csv`, the cleaned, comma-separated analysis dataset; `raw/stroop_raw.csv`, the original space-delimited download |
-| `code/` | `clean_data.R`, which converts the raw data into `data/stroop_data.csv`; `analysis.qmd`, the Quarto analysis that reads `data/stroop_data.csv` and reports the results |
-| `output/` | `analysis.html`, the rendered analysis |
+| `code/` | `clean_data.R`, which converts the raw data into `data/stroop_data.csv`; `analysis.qmd`, the Quarto/APA manuscript that reads `data/stroop_data.csv` and reports the results; `_extensions/`, the [apaquarto](https://github.com/wjschne/apaquarto) format used to render it |
+| `output/` | `analysis.pdf`, the rendered manuscript (APA 7th-edition format) |
 | `documentation/` | `stroop_data_codebook.csv`, describing every column in `data/stroop_data.csv` |
 
 `dataset_description.json`, at the repository root, is a machine-readable
@@ -32,8 +32,20 @@ summary of the dataset (Schema.org `Dataset`), independent of this README.
 2. `Rscript code/clean_data.R` regenerates `data/stroop_data.csv` from
    `data/raw/stroop_raw.csv` (already included, so this step is optional
    unless you want to re-run the conversion yourself).
-3. Render `code/analysis.qmd` with Quarto (`quarto render code/analysis.qmd`)
-   to reproduce `output/analysis.html`.
+3. Render `code/analysis.qmd` with Quarto to reproduce `output/analysis.pdf`:
+
+   ```sh
+   quarto render code/analysis.qmd --output-dir ../output
+   ```
+
+   This produces a PDF in APA 7th-edition format using the
+   [apaquarto](https://github.com/wjschne/apaquarto) extension, which is
+   included in `code/_extensions/` so no separate installation step is
+   needed. Rendering to PDF requires a LaTeX distribution; if you do not
+   already have one, install [TinyTeX](https://yihui.org/tinytex/) with
+   `quarto install tinytex`. Any LaTeX package the manuscript needs that
+   TinyTeX does not already have (for example `orcidlink`, used for the
+   author's ORCID) is installed automatically on first render.
 
 Required R packages: `ggplot2`, `reshape2`.
 
