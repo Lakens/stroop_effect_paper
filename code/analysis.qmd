@@ -60,8 +60,8 @@ An a priori power analysis for a paired-samples *t*-test, conducted using the `p
 
 ```{r}
 # The raw data (data/raw/stroop_raw.csv) were downloaded from
-# https://raw.githubusercontent.com/Lakens/Stroop/master/stroop.txt and are
-# space-delimited. code/clean_data.R converts them into the comma-separated,
+# https://raw.githubusercontent.com/Lakens/Stroop/master/stroop.txt and saved
+# as a comma-separated file. code/clean_data.R converts them into the
 # consistently-named file read in below; see documentation/stroop_data_codebook.csv
 # for a description of each column.
 

@@ -44,8 +44,8 @@
     {
       "@type": "DataDownload",
       "contentUrl": "data/raw/stroop_raw.csv",
-      "encodingFormat": "text/plain",
-      "description": "Raw, space-delimited data as originally downloaded; see code/clean_data.R for the conversion to data/stroop_data.csv"
+      "encodingFormat": "text/csv",
+      "description": "Raw data as originally downloaded, saved as a comma-separated file with its values unchanged; see code/clean_data.R for the conversion to data/stroop_data.csv"
     }
   ]
 }

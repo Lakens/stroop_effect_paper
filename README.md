@@ -17,7 +17,7 @@ Code Sharing in Psychology"](https://github.com/scienceverse/ms_FAIR_data_and_co
 
 | Folder | Contents |
 |---|---|
-| `data/` | `stroop_data.csv`, the cleaned, comma-separated analysis dataset; `raw/stroop_raw.csv`, the original space-delimited download |
+| `data/` | `stroop_data.csv`, the cleaned, comma-separated analysis dataset; `raw/stroop_raw.csv`, the original download, saved as a comma-separated file with its values unchanged |
 | `code/` | `clean_data.R`, which converts the raw data into `data/stroop_data.csv`; `analysis.qmd`, the Quarto/APA manuscript that reads `data/stroop_data.csv` and reports the results; `_extensions/`, the [apaquarto](https://github.com/wjschne/apaquarto) format used to render it |
 | `output/` | `analysis.pdf`, the rendered manuscript (APA 7th-edition format) |
 | `documentation/` | `stroop_data_codebook.csv`, describing every column in `data/stroop_data.csv` |
