@@ -94,9 +94,7 @@ ggplot(stroop_data, aes(x = congruent, y = incongruent)) +
 ```{r}
 #| include: false
 #Every result reported in the text is computed in this chunk, and the text
-#only rounds these values. The descriptive statistics are printed rather
-#than stored, so that they also appear in the output when the code is run
-#on its own.
+#only rounds these values.
 
 #Means and standard deviations of the reaction times in each condition.
 sapply(stroop_data[, c("congruent", "incongruent")], mean)
