@@ -52,7 +52,7 @@ with (see [Reproducing the analysis](#reproducing-the-analysis) below).
    TinyTeX does not already have (for example `orcidlink`, used for the
    author's ORCID) is installed automatically on first render.
 
-Required R packages (pinned in `renv.lock`): `ggplot2`, `reshape2`, `pwr`.
+Required R packages (pinned in `renv.lock`): `ggplot2`, `reshape2`, `pwr`, `effectsize`.
 
 ## License
 
